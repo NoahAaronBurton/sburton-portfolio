@@ -66,7 +66,7 @@ function App() {
         <button
           key={index}
           onClick={() => setActiveSection(index)}
-          className={`p-2 align-start ${activeSection === index ? 'text-xl text-gray-900'  : ' text-gray-500'}`}
+          className={`text-nowrap ${activeSection === index ? 'text-gray-900'  : ' text-gray-500'}`}
           >
           {section.title}
           </button>
@@ -78,10 +78,15 @@ function App() {
   
 
   return (
-    <>
-     {renderMenuItems()}
-      {activeComponent}
-    </>
+    <div className='flex flex-nowrap min-h-screen'>
+      <div className='flex flex-col items-start justify-center w-1/4 space-y-4 p-10' >
+        <h1 className='text-4xl font-semibold mb-6'>Sawyer Burton</h1>
+        {renderMenuItems()}
+      </div>
+      <div className='flex items-center justify-center p-10 w-3/4'>
+        {activeComponent}     
+      </div>  
+    </div>
   )
 }
 
