@@ -1,5 +1,4 @@
 import { Document, Page } from 'react-pdf';
-import pdf from '/written-works/col-one.pdf'
 import { useState } from 'react';
 
 import { pdfjs } from 'react-pdf';
@@ -7,7 +6,7 @@ import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 
-export default function PDFView ()  {
+export default function PDFView ({file})  {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [isDocumentLoaded, setIsDocumentLoaded] = useState(false);
@@ -27,7 +26,7 @@ export default function PDFView ()  {
   
     return (
       <div>
-        <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+        <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
           {isDocumentLoaded && <Page pageNumber={pageNumber} renderAnnotationLayer={false} renderTextLayer={false} />}
         </Document>
         <p>
