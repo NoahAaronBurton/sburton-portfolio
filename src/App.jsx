@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
 import './App.css'
 import { useState } from 'react';
-
+import PDFView from './components/PDFView';
 //todo: install https://github.com/wojtekmaj/react-pdf?tab=readme-ov-file
 // for displaying pdfs
 
@@ -17,7 +17,7 @@ const Academics = () => {
 }
 const WrittenWork = () => {
   return (
-    <p>WRITEEN  ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <PDFView />
   )
 }
 const Resume = () => {
@@ -79,12 +79,12 @@ function App() {
 
   return (
     <div className='flex flex-nowrap min-h-screen'>
-      <div className='flex flex-col items-start justify-center w-1/4 space-y-4 p-10' >
+      <div className='flex flex-col items-start space-y-4 p-10' >
         <h1 className='text-4xl font-semibold mb-6'>Sawyer Burton</h1>
         {renderMenuItems()}
       </div>
-      <div className='flex items-center justify-center p-10 w-3/4'>
-        {activeComponent}     
+      <div className='flex items-center justify-center p-10 '>
+        {activeComponent}
       </div>  
     </div>
   )
