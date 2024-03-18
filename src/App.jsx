@@ -103,7 +103,13 @@ const Resume = () => {
 }
 const SeniorPlans = () => {
   return (
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <>
+    <TextArea heading="Senior Project Plans" subheading="I plan to have a feature length script finished in time for my Senior Project." >
+      <p>I’ve already begun developing the script this semester in order to have a polished version I can be proud of ready in time for graduation. PDFs of the synopsis and in-progress treatment are available under the Written Work tab of this portfolio. The working title for this project is Children of Light. Though it’s a fictional story, it draws inspiration from the complicated history of various religious sects and messianic figures in the Western U.S. This script will be an intense character drama/thriller hybrid layered with themes of faith, guilt, and power.</p>
+      <h3 className='text-xl font-bold'>LOGLINE:</h3>
+      <p>When the isolated religious sect he grew up in is radicalized into shocking violence, a guilt-ridden young man must team up with an estranged childhood friend and his vengeful sister to kill the self-appointed prophet of God before he can enact his plan to cause mass hysteria amidst the Y2k crisis. </p>
+    </TextArea>
+    </>
   )
 }
 
