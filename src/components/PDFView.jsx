@@ -23,18 +23,22 @@ export default function PDFView ({file})  {
     function goToPreviousPage() {
       setPageNumber((prevPageNumber) => prevPageNumber - 1);
     }
-  
+    const buttonStyle = 'border border-tertiary text-black hover:bg-tertiary hover:text-white px-4 py-2 transition duration-200 ease-in-out'
     return (
-      <div>
-        <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-          {isDocumentLoaded && <Page pageNumber={pageNumber} renderAnnotationLayer={false} renderTextLayer={false} />}
-        </Document>
-        <p>
-          Page {pageNumber} of {numPages}
-        </p>
-        <div>
-          <button className='' onClick={goToNextPage} disabled={pageNumber >= numPages}>Next</button>
-          <button onClick={goToPreviousPage} disabled={pageNumber <= 1}>Previous</button>
+      <div className='flex flex-col items-center'>
+        <div className='w-[600px]'>
+          <div className='flex justify-between items-center'>
+            <button className={buttonStyle} onClick={goToPreviousPage} disabled={pageNumber <= 1}>Previous</button>
+            <p>
+              Page {pageNumber} of {numPages}
+            </p>
+            <button className={buttonStyle} onClick={goToNextPage} disabled={pageNumber >= numPages}>Next</button>
+          </div>
+          <div className='flex justify-center items-center min-h-screen'>
+            <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+              {isDocumentLoaded && <Page pageNumber={pageNumber} renderAnnotationLayer={false} renderTextLayer={false} />}
+            </Document>
+          </div>
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import './App.css'
 import { useState } from 'react';
 import PDFView from './components/PDFView';
 import pdf from '/written-works/col-one.pdf'
+import wolverine from '/academics/wolverine-track.pdf';
 import TextArea from './components/TextArea';
 //todo: install https://github.com/wojtekmaj/react-pdf?tab=readme-ov-file
 // for displaying pdfs
@@ -19,7 +20,16 @@ const IntroPage = () => {
 }
 const Academics = () => {
   return (
-    <p>ACADEMICS ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <>
+    <TextArea heading="Academics" subheading="Utah Valley University Wolverine Track">
+    </TextArea>
+    <div className='justify-center'>
+      <div >
+        <PDFView file={wolverine} />
+      </div>
+
+    </div>
+    </>
   )
 }
 const WrittenWork = () => {
