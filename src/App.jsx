@@ -2,12 +2,19 @@ import { render } from 'react-dom';
 import './App.css'
 import { useState } from 'react';
 import PDFView from './components/PDFView';
+import TextArea from './components/TextArea';
 //todo: install https://github.com/wojtekmaj/react-pdf?tab=readme-ov-file
 // for displaying pdfs
 
 const IntroPage = () => {
   return (
-    <p>INTRO ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <TextArea heading="Hello!" subheading="My name is Sawyer Burton..." >
+      <p>... and I’m thrilled to be in consideration for the upper division Digital Cinema Production classes at UVU.</p>
+      <p>This semester, thanks to the pilot DGM 250R program, I had the opportunity to be selected as one of five writers in the program to form a writers’ room tasked with creating a feature length screenplay for development with FanX Studios under the mentorship of producers Brent Baum and Jon Schwartz, revered screenwriter Ed Neumeier, and UVU screenwriting professor Alex Nibley. This is a dream come true for an aspiring writer, and a great opportunity to develop firsthand industry knowledge beyond what’s possible in a classroom setting.</p>
+      <p>Moving forward in the program, I hope to augment my education by surrounding myself with like-minded individuals and learning all I can from them. In a space with so many talented peers, learning by osmosis is almost inevitable. With a 3.87 overall GPA, I’m also proud to say that my grades reflect the time and effort I’ve put into succeeding in the program thus far.  Already, I feel my time at UVU has enriched my screenwriting vocabulary and I see no reason why this trend shouldn’t continue in the semesters to come.</p>
+      <p>Beyond graduation, I plan to take what I’ve learned and pursue a career in the industry with enduring fervor. It’s a childhood dream of mine and the prospect of taking part in creating films is still as exciting to me today as it was back then. </p>
+      
+    </TextArea>
   )
 }
 const Academics = () => {
@@ -34,7 +41,7 @@ const SeniorPlans = () => {
 
 const sections = [
   {
-    title: 'Introduction Page',
+    title: 'Introduction',
     component: <IntroPage />
   },
   {
@@ -46,7 +53,7 @@ const sections = [
     component: <WrittenWork />
   },
   {
-    title: 'On Set Work/ Resume',
+    title: 'Resume',
     component: <Resume />
   },
   {
@@ -78,12 +85,14 @@ function App() {
   
 
   return (
-    <div className='flex flex-nowrap min-h-screen'>
-      <div className='flex flex-col items-start space-y-4 p-10' >
-        <h1 className='text-4xl font-semibold mb-6'>Sawyer Burton</h1>
-        {renderMenuItems()}
-      </div>
-      <div className='flex items-center justify-center p-10 '>
+    <div className='flex flex-col min-h-screen p-10'>
+      <header className='flex justify-between mb-10'>
+        <h1 className='text-4xl font-semibold'>Sawyer Burton</h1>
+        <div className='flex space-x-4'>
+          {renderMenuItems()}
+        </div>
+      </header>
+      <div className='w-full mx-auto px-[100px]'>
         {activeComponent}
       </div>  
     </div>
