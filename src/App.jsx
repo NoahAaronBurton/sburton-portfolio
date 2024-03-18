@@ -41,10 +41,10 @@ const Academics = () => {
 }
 const WrittenWork = () => {
   const works = {
-    'Rough Treatment': roughTreatment,
-    'Short Pitch': shortPitch,
+    'Children of Light- Act 1 Treatment': roughTreatment,
+    'Crawling Mary- Short Pitch': shortPitch,
     'The String': theString,
-    'Column One': colOne
+    'Children of Light- One Pager': colOne
   }
 
   const [selectedWork, setSelectedWork] = useState(works['Short Pitch']);
