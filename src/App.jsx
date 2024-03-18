@@ -10,6 +10,7 @@ import wolverine from '/academics/wolverine-track.pdf';
 import TextArea from './components/TextArea';
 //todo: install https://github.com/wojtekmaj/react-pdf?tab=readme-ov-file
 // for displaying pdfs
+import Card from './components/Card';
 
 const IntroPage = () => {
   return (
@@ -85,7 +86,19 @@ const WrittenWork = () => {
 }
 const Resume = () => {
   return (
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <>
+    <TextArea heading="On Set Work" subheading="Projects" >
+    </ TextArea> 
+    <div className="grid grid-cols-3 gap-4">
+      <Card title="The String" role="Writer/Director" />
+      <Card title="The Stairs" subtitle="directed by Lily Huber" role="1st Assistant Director" />
+      <Card title="Student Film" subtitle="directed by Brendon Tolley" role="1st Assistant Director" />
+      <Card title="Call Your Mother" subtitle="directed by Annika Halversen" role="1st Assistant Director" />
+      <Card title="Monsters" subtitle="directed by Brady Dolan" role="Gaffer" />
+      <Card title="Own My Heart" subtitle="directed by Charlie Alexander" role="Grip/Props" />
+      <Card title="Wednesday at 6" subtitle="directed by Angel " role="Grip/Props" />
+    </div> 
+    </>
   )
 }
 const SeniorPlans = () => {
@@ -109,7 +122,7 @@ const sections = [
     component: <WrittenWork />
   },
   {
-    title: 'Resume',
+    title: 'On Set Work',
     component: <Resume />
   },
   {
