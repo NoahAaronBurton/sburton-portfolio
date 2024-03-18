@@ -2,7 +2,10 @@ import { render } from 'react-dom';
 import './App.css'
 import { useState } from 'react';
 import PDFView from './components/PDFView';
-import pdf from '/written-works/col-one.pdf'
+import colOne from '/written-works/col-one.pdf'
+import roughTreatment from '/written-works/rough-treatment.pdf';
+import shortPitch from '/written-works/short-pitch.pdf';
+import theString from '/written-works/the-string.pdf';
 import wolverine from '/academics/wolverine-track.pdf';
 import TextArea from './components/TextArea';
 //todo: install https://github.com/wojtekmaj/react-pdf?tab=readme-ov-file
@@ -19,13 +22,16 @@ const IntroPage = () => {
   )
 }
 const Academics = () => {
+  const resetPageNumber = (setPageNumber) => {
+    setPageNumber(1);
+  }
   return (
     <>
     <TextArea heading="Academics" subheading="Utah Valley University Wolverine Track">
     </TextArea>
     <div className='justify-center'>
       <div >
-        <PDFView file={wolverine} />
+        <PDFView file={wolverine} resetPageNumber={resetPageNumber} />
       </div>
 
     </div>
@@ -33,8 +39,48 @@ const Academics = () => {
   )
 }
 const WrittenWork = () => {
+  const works = {
+    'Rough Treatment': roughTreatment,
+    'Short Pitch': shortPitch,
+    'The String': theString,
+    'Column One': colOne
+  }
+
+  const [selectedWork, setSelectedWork] = useState(works['Short Pitch']);
+  const [selectedTitle, setSelectedTitle] = useState('Short Pitch');
+
+  const resetPageNumber = (setPageNumber) => {
+    setPageNumber(1);
+  }
+
+  const selectWork = (title, work) => {
+    setSelectedWork(work);
+    setSelectedTitle(title);
+  }
+
+  const buttonStyle = 'border border-tertiary text-black px-4 py-2 transition duration-200 ease-in-out'
+  const buttonSelectedStyle = 'border border-tertiary text-white bg-tertiary px-4 py-2 transition duration-200 ease-in-out'
   return (
-    <PDFView file={pdf} />
+    <div className='flex flex-col'>
+      <TextArea heading="Written Work" subheading="Select a Project to view PDF" />
+      <div className='flex space-x-4'>
+        <div className='flex flex-col space-y-4 w-1/4'>
+          {Object.keys(works).map((work, index) => (
+            <button
+              key={index}
+              onClick={() => selectWork(work, works[work])}
+              className={work === selectedTitle ? buttonSelectedStyle : buttonStyle}
+            >
+              {work}
+            </button>
+          ))}
+        </div>  
+        <div className='w-3/4'>
+          <h2 className='text-2xl mb-4 text-center font-bold'>{selectedTitle}</h2>
+          <PDFView file={selectedWork} resetPageNumber={resetPageNumber} />
+        </div>
+      </div>
+    </ div>
   )
 }
 const Resume = () => {

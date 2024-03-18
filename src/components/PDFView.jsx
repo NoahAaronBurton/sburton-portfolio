@@ -1,16 +1,20 @@
 import { Document, Page } from 'react-pdf';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { pdfjs } from 'react-pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 
-export default function PDFView ({file})  {
+export default function PDFView ({file, resetPageNumber})  {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [isDocumentLoaded, setIsDocumentLoaded] = useState(false);
   
+    useEffect(() => {
+      resetPageNumber(setPageNumber);
+    }, [file]);
+
     function onDocumentLoadSuccess({ numPages }) {
       setNumPages(numPages);
       setIsDocumentLoaded(true);
